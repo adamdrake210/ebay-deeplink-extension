@@ -1,0 +1,49 @@
+{
+  "name": "deepink-extension",
+  "version": "0.0.1",
+  "description": "deeplink generator for eBay links",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "dev": "webpack-dev-server --mode=development",
+    "build": "webpack --mode=production",
+    "postbuild": "cp ./public/index.html ./dist/index.html",
+    "start": "serve --no-clipboard --single --listen 8080 dist",
+    "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|json|css|html|md)\"",
+    "lint": "eslint --ignore-path .gitignore .",
+    "validate": "npm run lint && npm run test && npm run build",
+    "setup": "npm install && npm run validate"
+  },
+  "author": "Adam Drake",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.7.4",
+    "@babel/plugin-transform-runtime": "^7.7.4",
+    "@babel/preset-env": "^7.7.4",
+    "@babel/preset-react": "^7.7.4",
+    "@babel/runtime": "^7.7.4",
+    "@emotion/babel-preset-css-prop": "^10.0.23",
+    "@testing-library/react": "^10.0.2",
+    "babel-loader": "^8.0.6",
+    "css-loader": "^3.2.0",
+    "eslint": "^6.7.1",
+    "eslint-config-cypress": "^0.28.0",
+    "eslint-config-kentcdodds": "^14.6.1",
+    "file-loader": "^5.0.2",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^25.3.0",
+    "prettier": "^1.19.1",
+    "prop-types": "^15.7.2",
+    "serve": "^11.2.0",
+    "style-loader": "^1.0.0",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.9.0"
+  },
+  "dependencies": {
+    "@emotion/core": "^10.0.22",
+    "@emotion/styled": "^10.0.23",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  }
+}
