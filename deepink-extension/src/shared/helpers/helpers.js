@@ -8,24 +8,39 @@ export function browseNodeConverter(link) {
   return `ebay://link?nav=item.browse&id=${categoryEbayID[1]}`;
 }
 
-function eventsConverter(link) {
+export function eventsConverter(link) {
   let splitHyperlink = link.split('/e/');
   splitHyperlink = splitHyperlink[1].split('/');
 
   return `ebay://link?nav=item.events&eventgroupname=${splitHyperlink[0]}&eventname=${splitHyperlink[1]}`;
 }
 
-function storeConverter(link) {
+export function storeConverter(link) {
   const splitHyperlink = link.split('/');
 
-  if (splitHyperlink.length >= 3) {
+  if (link.includes('stores')) {
     return nativeLinkStore + splitHyperlink[3];
+  } else if (link.includes('str')) {
+    return nativeLinkStore + splitHyperlink[4];
   } else {
     return link;
   }
 }
 
-export function nativeLink(websiteHyperlink) {
+export function validURL(str) {
+  const pattern = new RegExp(
+    '^(https?:\\/\\/)?' + // protocol
+    '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name
+    '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
+    '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // port and path
+    '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
+      '(\\#[-a-z\\d_]*)?$',
+    'i',
+  ); // fragment locator
+  return !!pattern.test(str);
+}
+
+export function nativeLinkConverter(websiteHyperlink) {
   let hyperlink;
 
   if (websiteHyperlink.includes('.css') || websiteHyperlink.includes('.js')) {
@@ -61,7 +76,10 @@ export function nativeLink(websiteHyperlink) {
       hyperlink = browseNodeConverter(websiteHyperlink);
     }
 
-    if (websiteHyperlink.includes('stores.ebay')) {
+    if (
+      websiteHyperlink.includes('stores.ebay') ||
+      websiteHyperlink.includes('/str/')
+    ) {
       hyperlink = storeConverter(websiteHyperlink);
     }
   }
