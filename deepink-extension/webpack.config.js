@@ -12,20 +12,24 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.css$/,
+        test: /\.scss$/,
         exclude: /\.module\.css$/,
-        use: [{ loader: 'style-loader' }, { loader: 'css-loader' }],
-      },
-      {
-        test: /\.module\.css$/,
         use: [
           { loader: 'style-loader' },
-          {
-            loader: 'css-loader',
-            options: { modules: true, localsConvention: 'camelCaseOnly' },
-          },
+          { loader: 'css-loader' },
+          { loader: 'sass-loader' },
         ],
       },
+      // {
+      //   test: /\.module\.css$/,
+      //   use: [
+      //     { loader: 'style-loader' },
+      //     {
+      //       loader: 'css-loader',
+      //       options: { modules: true, localsConvention: 'camelCaseOnly' },
+      //     },
+      //   ],
+      // },
       {
         test: /\.js$/,
         exclude: /node_modules/,

@@ -1,11 +1,15 @@
-import React from 'react'
+import React from 'react';
+import './sass/styles.scss';
+import Header from './shared/components/Header';
+import SearchContainer from './shared/containers/SearchContainer';
 
 function App() {
   return (
-    <div>
-      <h1>This is working reall!</h1>
+    <div className="container">
+      <Header />
+      <SearchContainer />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
