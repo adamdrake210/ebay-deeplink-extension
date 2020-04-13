@@ -47,6 +47,7 @@
     "@emotion/core": "^10.0.22",
     "@emotion/styled": "^10.0.23",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "urlencode": "^1.1.0"
   }
 }

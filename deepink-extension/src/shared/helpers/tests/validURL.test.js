@@ -1,6 +1,6 @@
-import { validURL } from '../helpers/helpers';
+import { validURL } from '../helpers';
 
-test('Converts link to a native browse node link', () => {
+test('Validates if strings are urls', () => {
   expect(validURL('https://www.ebay.it/')).toBe(true);
   expect(validURL('http://ebay.com')).toBe(true);
   expect(validURL('htp://ebay.co.u')).toBe(false);
