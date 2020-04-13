@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export default function InputField({ handleInputValue, handleUrlConversion }) {
   return (
@@ -10,3 +11,8 @@ export default function InputField({ handleInputValue, handleUrlConversion }) {
     </div>
   );
 }
+
+InputField.propTypes = {
+  handleInputValue: PropTypes.func,
+  handleUrlConversion: PropTypes.func,
+};
