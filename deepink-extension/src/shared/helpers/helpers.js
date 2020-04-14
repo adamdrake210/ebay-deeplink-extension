@@ -47,51 +47,44 @@ export function validURL(str) {
   return !!pattern.test(str);
 }
 
-export function nativeLinkConverter(websiteHyperlink) {
-  let hyperlink;
+export function nativeLinkConverter(url) {
+  let updatedUrl;
 
-  if (
-    websiteHyperlink.includes('.css') ||
-    websiteHyperlink.includes('.js') ||
-    websiteHyperlink.startsWith('#')
-  ) {
-    return websiteHyperlink;
+  if (url.includes('.css') || url.includes('.js') || url.startsWith('#')) {
+    return url;
   }
 
-  if (websiteHyperlink.endsWith('/deals')) {
-    hyperlink = nativeLinkDeals;
+  if (url.endsWith('/deals')) {
+    updatedUrl = nativeLinkDeals;
   }
 
   if (
-    websiteHyperlink.endsWith('/') &&
-    (websiteHyperlink.endsWith('ebay.com/') ||
-      websiteHyperlink.endsWith('ebay.co.uk/') ||
-      websiteHyperlink.endsWith('ebay.it/') ||
-      websiteHyperlink.endsWith('ebay.de/') ||
-      websiteHyperlink.endsWith('ebay.fr/') ||
-      websiteHyperlink.endsWith('ebay.es/'))
+    url.endsWith('/') &&
+    (url.endsWith('ebay.com/') ||
+      url.endsWith('ebay.co.uk/') ||
+      url.endsWith('ebay.it/') ||
+      url.endsWith('ebay.de/') ||
+      url.endsWith('ebay.fr/') ||
+      url.endsWith('ebay.es/'))
   ) {
-    hyperlink = nativeLinkHomepage;
+    updatedUrl = nativeLinkHomepage;
   }
 
-  if (websiteHyperlink.includes('/e/')) {
-    hyperlink = eventsConverter(websiteHyperlink);
+  if (url.includes('/e/')) {
+    updatedUrl = eventsConverter(url);
   }
 
-  if (websiteHyperlink.includes('/b/')) {
-    hyperlink = browseNodeConverter(websiteHyperlink);
+  if (url.includes('/b/')) {
+    updatedUrl = browseNodeConverter(url);
   }
 
-  if (
-    websiteHyperlink.includes('stores.ebay') ||
-    websiteHyperlink.includes('/str/')
-  ) {
-    hyperlink = storeConverter(websiteHyperlink);
+  if (url.includes('stores.ebay') || url.includes('/str/')) {
+    updatedUrl = storeConverter(url);
   }
 
-  if (websiteHyperlink.includes('pages.ebay')) {
-    hyperlink = mwebViewConverter(websiteHyperlink);
+  if (url.includes('pages.ebay')) {
+    updatedUrl = mwebViewConverter(url);
   }
 
-  return hyperlink || websiteHyperlink;
+  return updatedUrl || url;
 }
