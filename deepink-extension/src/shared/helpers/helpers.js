@@ -1,7 +1,10 @@
 /* eslint-disable complexity */
+const urlencode = require('urlencode');
+
 const nativeLinkHomepage = 'ebay://link/?nav=home';
 const nativeLinkDeals = 'ebay://link/?nav=item.deals';
 const nativeLinkStore = 'ebay://link/?nav=item.query&seller=';
+const mwebViewLink = 'ebay://link/?nav=webview&ssoScope=true&url=';
 
 export function browseNodeConverter(link) {
   const categoryEbayID = link.split('/bn_');
@@ -27,62 +30,61 @@ export function storeConverter(link) {
   }
 }
 
+export function mwebViewConverter(link) {
+  return mwebViewLink + urlencode(link);
+}
+
 export function validURL(str) {
   const pattern = new RegExp(
-    '^(https?:\\/\\/)?' + // protocol
-    '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name
-    '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
-    '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // port and path
-    '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
+    '^(https?:\\/\\/)?' +
+      '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' +
+      '((\\d{1,3}\\.){3}\\d{1,3}))' +
+      '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' +
+      '(\\?[;&a-z\\d%_.~+=-]*)?' +
       '(\\#[-a-z\\d_]*)?$',
     'i',
-  ); // fragment locator
+  );
   return !!pattern.test(str);
 }
 
-export function nativeLinkConverter(websiteHyperlink) {
-  let hyperlink;
+export function nativeLinkConverter(url) {
+  let updatedUrl;
 
-  if (websiteHyperlink.includes('.css') || websiteHyperlink.includes('.js')) {
-    return websiteHyperlink;
+  if (url.includes('.css') || url.includes('.js') || url.startsWith('#')) {
+    return url;
   }
 
-  if (websiteHyperlink.startsWith('#')) {
-    return websiteHyperlink;
+  if (url.endsWith('/deals')) {
+    updatedUrl = nativeLinkDeals;
   }
 
-  if (websiteHyperlink) {
-    if (websiteHyperlink.endsWith('/deals')) {
-      hyperlink = nativeLinkDeals;
-    }
-
-    if (
-      websiteHyperlink.endsWith('/') &&
-      (websiteHyperlink.endsWith('ebay.com/') ||
-        websiteHyperlink.endsWith('ebay.co.uk/') ||
-        websiteHyperlink.endsWith('ebay.it/') ||
-        websiteHyperlink.endsWith('ebay.de/') ||
-        websiteHyperlink.endsWith('ebay.fr/') ||
-        websiteHyperlink.endsWith('ebay.es/'))
-    ) {
-      hyperlink = nativeLinkHomepage;
-    }
-
-    if (websiteHyperlink.includes('/e/')) {
-      hyperlink = eventsConverter(websiteHyperlink);
-    }
-
-    if (websiteHyperlink.includes('/b/')) {
-      hyperlink = browseNodeConverter(websiteHyperlink);
-    }
-
-    if (
-      websiteHyperlink.includes('stores.ebay') ||
-      websiteHyperlink.includes('/str/')
-    ) {
-      hyperlink = storeConverter(websiteHyperlink);
-    }
+  if (
+    url.endsWith('/') &&
+    (url.endsWith('ebay.com/') ||
+      url.endsWith('ebay.co.uk/') ||
+      url.endsWith('ebay.it/') ||
+      url.endsWith('ebay.de/') ||
+      url.endsWith('ebay.fr/') ||
+      url.endsWith('ebay.es/'))
+  ) {
+    updatedUrl = nativeLinkHomepage;
   }
 
-  return hyperlink || websiteHyperlink;
+  if (url.includes('/e/')) {
+    updatedUrl = eventsConverter(url);
+  }
+
+  if (url.includes('/b/')) {
+    updatedUrl = browseNodeConverter(url);
+  }
+
+  if (url.includes('stores.ebay') || url.includes('/str/')) {
+    updatedUrl = storeConverter(url);
+  }
+
+  if (url.includes('pages.ebay')) {
+    updatedUrl = mwebViewConverter(url);
+  }
+
+  return updatedUrl || url;
 }

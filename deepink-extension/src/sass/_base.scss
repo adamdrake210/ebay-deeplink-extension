@@ -34,7 +34,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: 'Market Sans Regular WebS', Helvetica, Arial, sans-serif;
-  background-color: $mainColour;
+  background-color: #feffef;
   min-width: 320px;
 }
 
@@ -42,4 +42,14 @@ body {
   max-width: 600px;
   width: 100%;
   margin: 0 auto;
+}
+
+.search-field-container {
+  display: flex;
+  width: 100%;
+  height: 200px;
+}
+
+.convertedlinks-container {
+  display: flex;
 }

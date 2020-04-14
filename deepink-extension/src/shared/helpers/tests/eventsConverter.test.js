@@ -1,6 +1,6 @@
-import { eventsConverter } from '../helpers/helpers';
+import { eventsConverter } from '../helpers';
 
-test('Converts link to a native browse node link', () => {
+test('Converts link to a native events page link', () => {
   expect(
     eventsConverter('https://www.ebay.it/e/_elettronica/informatica'),
   ).toBe(

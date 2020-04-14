@@ -1,3 +1,6 @@
 @import 'variables';
 @import 'normalize';
 @import 'base';
+
+@import './modules/search.scss';
+@import './modules/header.scss';

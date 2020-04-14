@@ -1,4 +1,4 @@
-import { browseNodeConverter } from '../helpers/helpers';
+import { browseNodeConverter } from '../helpers';
 
 test('Converts link to a native browse node link', () => {
   expect(

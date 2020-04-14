@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import InputField from '../components/InputField';
+import SearchField from '../components/SearchField';
 import ConvertedLinks from '../components/ConvertedLinks';
 import { nativeLinkConverter, validURL } from '../helpers/helpers';
 
@@ -26,11 +26,15 @@ function SearchContainer() {
 
   return (
     <div>
-      <InputField
-        handleInputValue={handleInputValue}
-        handleUrlConversion={handleUrlConversion}
-      />
-      <ConvertedLinks convertedLink={convertedLink} isValidUrl={isValidUrl} />
+      <div className="search-field-container">
+        <SearchField
+          handleInputValue={handleInputValue}
+          handleUrlConversion={handleUrlConversion}
+        />
+      </div>
+      <div className="convertedlinks-container">
+        <ConvertedLinks convertedLink={convertedLink} isValidUrl={isValidUrl} />
+      </div>
     </div>
   );
 }
