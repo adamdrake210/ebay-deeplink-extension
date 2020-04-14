@@ -9,6 +9,11 @@ export default function SearchField({ handleInputValue, handleUrlConversion }) {
         placeholder="Enter url here..."
         type="text"
         onChange={handleInputValue}
+        onKeyDown={e => {
+          if (e.key === 'Enter') {
+            handleUrlConversion();
+          }
+        }}
       />
       <a href="#" className="search-link">
         <button

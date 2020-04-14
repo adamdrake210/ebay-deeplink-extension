@@ -19,9 +19,8 @@ export default function ConvertedLinks({ convertedLink, isValidUrl }) {
     <>
       {convertedLink && (
         <div>
-          <h2>Please find below your native links:</h2>
           <p>
-            iOS Link: {convertedLink}{' '}
+            Native Link: {convertedLink}{' '}
             <button
               className="clipboard-button"
               onClick={() => copyClipboard(convertedLink)}
@@ -29,7 +28,7 @@ export default function ConvertedLinks({ convertedLink, isValidUrl }) {
               {svgIconCopy} Copy
             </button>
           </p>
-          <p>
+          {/* <p>
             Android Link: {convertedLink}{' '}
             <button
               className="clipboard-button"
@@ -37,7 +36,7 @@ export default function ConvertedLinks({ convertedLink, isValidUrl }) {
             >
               {svgIconCopy} Copy
             </button>
-          </p>
+          </p> */}
           <span className="invisibleCopy" />
         </div>
       )}

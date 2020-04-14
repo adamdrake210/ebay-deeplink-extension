@@ -7,6 +7,9 @@
   height: 60px;
   border-radius: 40px;
   padding: 10px;
+  input::placeholder {
+    color: rgba(260, 260, 260, 0.6);
+  }
   &:hover {
     .search-txt {
       width: 300px;
@@ -30,7 +33,7 @@
   border: none;
   background: none;
   outline: none;
-  color: white;
+  color: rgba(260, 260, 260, 0.9);
   width: 40px;
   height: 40px;
   font-size: 16px;

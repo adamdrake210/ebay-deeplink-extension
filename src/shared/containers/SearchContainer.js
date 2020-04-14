@@ -10,13 +10,11 @@ function SearchContainer() {
 
   const handleInputValue = e => {
     setInputValue(e.target.value);
-    console.log(inputValue);
   };
 
   const handleUrlConversion = () => {
     if (validURL(inputValue)) {
       const nativeLink = nativeLinkConverter(inputValue);
-      console.log(nativeLink);
       setConvertedLink(nativeLink);
       setIsValidUrl(false);
     } else {
