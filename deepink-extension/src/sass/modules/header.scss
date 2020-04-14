@@ -1,0 +1,9 @@
+.header {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  h1 {
+    color: $purple;
+    font-size: 40px;
+  }
+}

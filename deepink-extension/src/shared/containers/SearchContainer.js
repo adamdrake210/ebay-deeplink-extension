@@ -26,11 +26,15 @@ function SearchContainer() {
 
   return (
     <div>
-      <SearchField
-        handleInputValue={handleInputValue}
-        handleUrlConversion={handleUrlConversion}
-      />
-      <ConvertedLinks convertedLink={convertedLink} isValidUrl={isValidUrl} />
+      <div className="search-field-container">
+        <SearchField
+          handleInputValue={handleInputValue}
+          handleUrlConversion={handleUrlConversion}
+        />
+      </div>
+      <div className="convertedlinks-container">
+        <ConvertedLinks convertedLink={convertedLink} isValidUrl={isValidUrl} />
+      </div>
     </div>
   );
 }
