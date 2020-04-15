@@ -10,4 +10,7 @@ test('Converts link to a native store page link', () => {
   expect(storeConverter('http://stores.ebay.co.uk/footasylumoutlet')).toBe(
     'ebay://link/?nav=item.query&seller=footasylumoutlet',
   );
+  expect(storeConverter('https://www.ebay.co.uk/sch/directplants/m.html')).toBe(
+    'ebay://link/?nav=item.query&seller=directplants',
+  );
 });

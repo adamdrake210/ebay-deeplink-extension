@@ -23,7 +23,7 @@ export function storeConverter(link) {
 
   if (link.includes('stores')) {
     return nativeLinkStore + splitHyperlink[3];
-  } else if (link.includes('str')) {
+  } else if (link.includes('str') || link.includes('sch')) {
     return nativeLinkStore + splitHyperlink[4];
   } else {
     return link;
@@ -78,7 +78,11 @@ export function nativeLinkConverter(url) {
     updatedUrl = browseNodeConverter(url);
   }
 
-  if (url.includes('stores.ebay') || url.includes('/str/')) {
+  if (
+    url.includes('stores.ebay') ||
+    url.includes('/str/') ||
+    url.includes('/sch/')
+  ) {
     updatedUrl = storeConverter(url);
   }
 

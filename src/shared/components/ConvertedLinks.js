@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { svgIconCopy } from '../assets/svgs/copy';
 
 export default function ConvertedLinks({ convertedLink, isValidUrl }) {
+  const [copied, setCopied] = useState(false);
+
   const copyClipboard = url => {
     const copyHere = document.createElement('textarea');
     copyHere.id = 'clipboardContent';
@@ -13,16 +15,17 @@ export default function ConvertedLinks({ convertedLink, isValidUrl }) {
     copyText.select();
     document.execCommand('copy');
     copyText.remove();
+    setCopied(true);
   };
 
   return (
     <>
       {convertedLink && (
-        <div>
-          <p>
-            Native Link: {convertedLink}{' '}
+        <div className="converted-link__container">
+          <p className="converted-link__paragraph">
+            {convertedLink}{' '}
             <button
-              className="clipboard-button"
+              className="clipboard-button copy-btn"
               onClick={() => copyClipboard(convertedLink)}
             >
               {svgIconCopy} Copy
@@ -43,6 +46,7 @@ export default function ConvertedLinks({ convertedLink, isValidUrl }) {
       {isValidUrl && (
         <h3>This URL you have provided is not valid. Please verify it.</h3>
       )}
+      {copied && <h4>Copied!</h4>}
     </>
   );
 }

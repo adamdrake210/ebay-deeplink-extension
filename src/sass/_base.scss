@@ -35,7 +35,7 @@ body {
   margin: 0;
   font-family: 'Market Sans Regular WebS', Helvetica, Arial, sans-serif;
   background-color: #feffef;
-  min-width: 320px;
+  min-width: 600px;
 }
 
 .container {
@@ -52,4 +52,7 @@ body {
 
 .convertedlinks-container {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }

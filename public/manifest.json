@@ -1,16 +1,19 @@
 {
   "name": "eBay Native Link Generator",
-  "version": "0.1",
+  "version": "0.0.1",
   "description": "Creates Native Links for eBay Application",
   "manifest_version": 2,
+  "homepage_url": "https://ebay.com",
   "icons": {
     "19": "time-logo-19x19.png",
     "128": "time-logo-128x128.png"
   },
   "browser_action": {
     "default_icon": "time-logo-19x19.png",
+    "default_title": "eBay Native Link Generator",
     "default_popup": "index.html"
   },
+  "default_locale": "en",
   "permissions": ["tabs", "activeTab", "https://*/", "management"],
   "content_security_policy": "script-src 'self' 'sha256-0wCySo4xovAdrardRZQ2Lg88jGxjalFxUdpxVH5GUpA='; object-src 'self'"
 }
