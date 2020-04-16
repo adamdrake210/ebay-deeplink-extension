@@ -1,0 +1,36 @@
+@font-face {
+  font-family: 'Market Sans Regular WebS';
+  src: url('../fonts/MarketSans-Regular-WebS.eot');
+  src: url('../fonts/MarketSans-Regular-WebS.eot?#iefix')
+      format('embedded-opentype'),
+    url('../fonts/MarketSans-Regular-WebS.woff2') format('woff2'),
+    url('../fonts/MarketSans-Regular-WebS.woff') format('woff'),
+    url('../fonts/MarketSans-Regular-WebS.ttf') format('truetype'),
+    url('../fonts/MarketSans-Regular-WebS.svg#MarketSans-Regular-WebS')
+      format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Market Sans Regular WebS', Helvetica, Arial, sans-serif;
+  min-width: 450px;
+  min-height: 550px;
+  height: 100%;
+}
+
+.container {
+  background-color: $blue1;
+  color: $blue2;
+  width: 450px;
+  margin: 0 auto;
+  padding: 16px;
+  padding-bottom: 32px;
+  border-radius: 5px;
+}

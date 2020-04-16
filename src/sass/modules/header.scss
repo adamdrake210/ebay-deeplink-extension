@@ -1,0 +1,12 @@
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  svg {
+    margin-left: -32px;
+  }
+  h1 {
+    color: $blue2;
+    font-size: 26px;
+  }
+}
