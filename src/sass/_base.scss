@@ -12,20 +12,6 @@
   font-style: normal;
 }
 
-@font-face {
-  font-family: 'Market Sans SemiBold WebS';
-  src: url('../fonts/MarketSans-SemiBold-WebS.eot');
-  src: url('../fonts/MarketSans-SemiBold-WebS.eot?#iefix')
-      format('embedded-opentype'),
-    url('../fonts/MarketSans-SemiBold-WebS.woff2') format('woff2'),
-    url('../fonts/MarketSans-SemiBold-WebS.woff') format('woff'),
-    url('../fonts/MarketSans-SemiBold-WebS.ttf') format('truetype'),
-    url('../fonts/MarketSans-SemiBold-WebS.svg#MarketSans-SemiBold-WebS')
-      format('svg');
-  font-weight: bold;
-  font-style: normal;
-}
-
 * {
   box-sizing: border-box;
 }
@@ -35,27 +21,16 @@ body {
   margin: 0;
   font-family: 'Market Sans Regular WebS', Helvetica, Arial, sans-serif;
   min-width: 450px;
-  min-height: 300px;
+  min-height: 550px;
+  height: 100%;
 }
 
 .container {
-  background-color: #feffef;
+  background-color: $blue1;
+  color: $blue2;
   width: 450px;
   margin: 0 auto;
   padding: 16px;
-}
-
-.search-field-container {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  position: relative;
-  margin-bottom: 32px;
-}
-
-.convertedlinks-container {
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  flex-direction: column;
+  padding-bottom: 32px;
+  border-radius: 5px;
 }

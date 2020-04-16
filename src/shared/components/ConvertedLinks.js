@@ -19,10 +19,11 @@ export default function ConvertedLinks({ convertedLink, isValidUrl }) {
   };
 
   return (
-    <>
+    <div className="convertedlinks-container">
       {convertedLink && (
-        <div className="converted-link__container">
-          <p className="converted-link__paragraph">
+        <div className="convertedlinks-text">
+          {copied && <p className="copied">Copied!</p>}
+          <p>
             {convertedLink}{' '}
             <button
               className="clipboard-button copy-btn"
@@ -31,23 +32,16 @@ export default function ConvertedLinks({ convertedLink, isValidUrl }) {
               {svgIconCopy} Copy
             </button>
           </p>
-          {/* <p>
-            Android Link: {convertedLink}{' '}
-            <button
-              className="clipboard-button"
-              onClick={() => copyClipboard(convertedLink)}
-            >
-              {svgIconCopy} Copy
-            </button>
-          </p> */}
           <span className="invisibleCopy" />
         </div>
       )}
       {isValidUrl && (
-        <h3>This URL you have provided is not valid. Please verify it.</h3>
+        <p>This URL you have provided is not valid. Please verify it.</p>
       )}
-      {copied && <h4>Copied!</h4>}
-    </>
+      {!convertedLink && !isValidUrl && (
+        <p>The native link will appear here...</p>
+      )}
+    </div>
   );
 }
 

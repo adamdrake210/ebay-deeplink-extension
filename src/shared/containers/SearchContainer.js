@@ -32,11 +32,11 @@ function SearchContainer() {
           handleUrlConversion={handleUrlConversion}
         />
       </div>
-      <div className="convertedlinks-container">
+      <div>
         <h3>Native Link</h3>
         <ConvertedLinks convertedLink={convertedLink} isValidUrl={isValidUrl} />
       </div>
-      <div className="convertedlinks-container">
+      <div>
         <h3>Useful Links</h3>
         <UsefulLinks />
       </div>
