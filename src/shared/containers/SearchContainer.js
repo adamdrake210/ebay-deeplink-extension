@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import SearchField from '../components/SearchField';
 import ConvertedLinks from '../components/ConvertedLinks';
+import UsefulLinks from '../components/UsefulLinks';
 import { nativeLinkConverter, validURL } from '../helpers/helpers';
 
 function SearchContainer() {
@@ -25,13 +26,19 @@ function SearchContainer() {
   return (
     <div>
       <div className="search-field-container">
+        <h3>URL To Be Converted</h3>
         <SearchField
           handleInputValue={handleInputValue}
           handleUrlConversion={handleUrlConversion}
         />
       </div>
       <div className="convertedlinks-container">
+        <h3>Native Link</h3>
         <ConvertedLinks convertedLink={convertedLink} isValidUrl={isValidUrl} />
+      </div>
+      <div className="convertedlinks-container">
+        <h3>Useful Links</h3>
+        <UsefulLinks />
       </div>
     </div>
   );

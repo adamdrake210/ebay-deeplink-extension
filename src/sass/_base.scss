@@ -34,25 +34,28 @@ body {
   padding: 0;
   margin: 0;
   font-family: 'Market Sans Regular WebS', Helvetica, Arial, sans-serif;
-  background-color: #feffef;
-  min-width: 600px;
+  min-width: 450px;
+  min-height: 300px;
 }
 
 .container {
-  max-width: 600px;
-  width: 100%;
+  background-color: #feffef;
+  width: 450px;
   margin: 0 auto;
+  padding: 16px;
 }
 
 .search-field-container {
   display: flex;
+  flex-direction: column;
   width: 100%;
-  height: 150px;
+  position: relative;
+  margin-bottom: 32px;
 }
 
 .convertedlinks-container {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
   flex-direction: column;
 }

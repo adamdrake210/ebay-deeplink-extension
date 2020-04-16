@@ -12,26 +12,24 @@ test('Converts link to a native page link', () => {
   expect(nativeLinkConverter('http://stores.ebay.co.uk/deluxbathrooms')).toBe(
     'ebay://link/?nav=item.query&seller=deluxbathrooms',
   );
-  expect(storeConverter('http://stores.ebay.co.uk/footasylumoutlet')).toBe(
+  expect(nativeLinkConverter('http://stores.ebay.co.uk/footasylumoutlet')).toBe(
     'ebay://link/?nav=item.query&seller=footasylumoutlet',
   );
-  expect(storeConverter('https://www.ebay.co.uk/sch/directplants/m.html')).toBe(
-    'ebay://link/?nav=item.query&seller=directplants',
-  );
-  expect(nativeLinkConverter('http://ebay.com')).toBe(
-    'ebay://link/?nav=home',
-  );
-  expect(nativeLinkConverter('http://ebay.com/)).toBe(
-    'ebay://link/?nav=home',
-  );
-  expect(nativeLinkConverter('http://ebay.co.uk/deals/)).toBe(
+  expect(
+    nativeLinkConverter('https://www.ebay.co.uk/sch/directplants/m.html'),
+  ).toBe('ebay://link/?nav=item.query&seller=directplants');
+  expect(nativeLinkConverter('http://ebay.com')).toBe('ebay://link/?nav=home');
+  expect(nativeLinkConverter('http://ebay.com/')).toBe('ebay://link/?nav=home');
+  expect(nativeLinkConverter('http://ebay.co.uk/deals/')).toBe(
     'ebay://link/?nav=item.deals',
   );
   expect(
     nativeLinkConverter('https://www.ebay.com/b/Trading-Cards/bn_7116496578'),
   ).toBe('ebay://link?nav=item.browse&id=7116496578');
   expect(
-    nativeLinkConverter('https://www.ebay.com/b/Mens-Collectible-Sneakers/bn_7000259435'),
+    nativeLinkConverter(
+      'https://www.ebay.com/b/Mens-Collectible-Sneakers/bn_7000259435',
+    ),
   ).toBe('ebay://link?nav=item.browse&id=7000259435');
   expect(
     nativeLinkConverter('https://pages.ebay.com/financialservices/index.html'),

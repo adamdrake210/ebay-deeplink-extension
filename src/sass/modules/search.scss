@@ -1,20 +1,11 @@
 .search-box {
-  position: absolute;
-  top: 120px;
-  left: 50%;
-  transform: translate(-50%, -50%);
   background-color: $purple;
   height: 60px;
-  border-radius: 40px;
+  border-radius: 10px;
   padding: 10px;
+  display: flex;
   input::placeholder {
     color: rgba(260, 260, 260, 0.6);
-  }
-  &:hover {
-    .search-txt {
-      width: 300px;
-      padding: 0 6px;
-    }
   }
 }
 
@@ -49,8 +40,8 @@
   float: left;
   padding: 0 6px;
   color: white;
-  font-size: 16px;
+  font-size: 20px;
   transition: 0.4s;
   line-height: 40px;
-  width: 300px;
+  width: 370px;
 }
