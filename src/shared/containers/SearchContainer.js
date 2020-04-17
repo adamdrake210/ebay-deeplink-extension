@@ -8,18 +8,21 @@ function SearchContainer() {
   const [inputValue, setInputValue] = useState('');
   const [convertedLink, setConvertedLink] = useState('');
   const [isValidUrl, setIsValidUrl] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   const handleInputValue = e => {
     setInputValue(e.target.value);
   };
 
   const handleUrlConversion = () => {
+    setCopied(false);
     if (validURL(inputValue)) {
       const nativeLink = nativeLinkConverter(inputValue);
       setConvertedLink(nativeLink);
       setIsValidUrl(false);
     } else {
       setIsValidUrl(true);
+      setConvertedLink('');
     }
   };
 
@@ -34,7 +37,12 @@ function SearchContainer() {
       </div>
       <div>
         <h3>Native Link</h3>
-        <ConvertedLinks convertedLink={convertedLink} isValidUrl={isValidUrl} />
+        <ConvertedLinks
+          convertedLink={convertedLink}
+          isValidUrl={isValidUrl}
+          copied={copied}
+          setCopied={setCopied}
+        />
       </div>
       <div>
         <h3>Useful Links</h3>

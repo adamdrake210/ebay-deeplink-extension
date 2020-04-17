@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { svgIconCopy } from '../assets/svgs/copy';
 
-export default function ConvertedLinks({ convertedLink, isValidUrl }) {
-  const [copied, setCopied] = useState(false);
-
+export default function ConvertedLinks({
+  convertedLink,
+  isValidUrl,
+  copied,
+  setCopied,
+}) {
   const copyClipboard = url => {
     const copyHere = document.createElement('textarea');
     copyHere.id = 'clipboardContent';
@@ -23,15 +26,15 @@ export default function ConvertedLinks({ convertedLink, isValidUrl }) {
       {convertedLink && (
         <div className="convertedlinks-text">
           {copied && <p className="copied">Copied!</p>}
-          <p>
-            {convertedLink}{' '}
+          {!copied && (
             <button
               className="clipboard-button copy-btn"
               onClick={() => copyClipboard(convertedLink)}
             >
-              {svgIconCopy} Copy
+              {svgIconCopy}
             </button>
-          </p>
+          )}
+          <p>{convertedLink} </p>
           <span className="invisibleCopy" />
         </div>
       )}
@@ -48,4 +51,6 @@ export default function ConvertedLinks({ convertedLink, isValidUrl }) {
 ConvertedLinks.propTypes = {
   convertedLink: PropTypes.string,
   isValidUrl: PropTypes.bool,
+  copied: PropTypes.bool,
+  setCopied: PropTypes.func,
 };

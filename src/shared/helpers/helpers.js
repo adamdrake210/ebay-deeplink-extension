@@ -31,7 +31,11 @@ export function storeConverter(link) {
 }
 
 export function mwebViewConverter(link) {
-  return mwebViewLink + urlencode(link);
+  if (link.endsWith('.html')) {
+    return mwebViewLink + urlencode(link);
+  } else {
+    return mwebViewLink + urlencode(`${link}/index.html`);
+  }
 }
 
 export function validURL(str) {
@@ -47,48 +51,60 @@ export function validURL(str) {
   return !!pattern.test(str);
 }
 
+export function trimEnd(link) {
+  if (link.endsWith('/')) {
+    return link.slice(0, -1);
+  } else {
+    return link;
+  }
+}
+
 export function nativeLinkConverter(url) {
+  const trimmedUrl = trimEnd(url);
   let updatedUrl;
 
-  if (url.includes('.css') || url.includes('.js') || url.startsWith('#')) {
-    return url;
+  if (
+    trimmedUrl.includes('.css') ||
+    trimmedUrl.includes('.js') ||
+    trimmedUrl.startsWith('#')
+  ) {
+    return trimmedUrl;
   }
 
-  if (url.endsWith('/deals')) {
+  if (trimmedUrl.endsWith('/deals')) {
     updatedUrl = nativeLinkDeals;
   }
 
   if (
-    url.endsWith('/') &&
-    (url.endsWith('ebay.com/') ||
-      url.endsWith('ebay.co.uk/') ||
-      url.endsWith('ebay.it/') ||
-      url.endsWith('ebay.de/') ||
-      url.endsWith('ebay.fr/') ||
-      url.endsWith('ebay.es/'))
+    trimmedUrl.endsWith('ebay.com') ||
+    trimmedUrl.endsWith('ebay.co.uk') ||
+    trimmedUrl.endsWith('ebay.it') ||
+    trimmedUrl.endsWith('ebay.de') ||
+    trimmedUrl.endsWith('ebay.fr') ||
+    trimmedUrl.endsWith('ebay.es')
   ) {
     updatedUrl = nativeLinkHomepage;
   }
 
-  if (url.includes('/e/')) {
-    updatedUrl = eventsConverter(url);
+  if (trimmedUrl.includes('/e/')) {
+    updatedUrl = eventsConverter(trimmedUrl);
   }
 
-  if (url.includes('/b/')) {
-    updatedUrl = browseNodeConverter(url);
+  if (trimmedUrl.includes('/b/')) {
+    updatedUrl = browseNodeConverter(trimmedUrl);
   }
 
   if (
-    url.includes('stores.ebay') ||
-    url.includes('/str/') ||
-    url.includes('/sch/')
+    trimmedUrl.includes('stores.ebay') ||
+    trimmedUrl.includes('/str/') ||
+    trimmedUrl.includes('/sch/')
   ) {
-    updatedUrl = storeConverter(url);
+    updatedUrl = storeConverter(trimmedUrl);
   }
 
-  if (url.includes('pages.ebay')) {
-    updatedUrl = mwebViewConverter(url);
+  if (trimmedUrl.includes('pages.ebay')) {
+    updatedUrl = mwebViewConverter(trimmedUrl);
   }
 
-  return updatedUrl || url;
+  return updatedUrl || trimmedUrl;
 }

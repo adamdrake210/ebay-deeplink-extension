@@ -1,7 +1,7 @@
 import React from 'react';
 import './sass/styles.scss';
-import Header from './shared/components/Header';
-import SearchContainer from './shared/containers/SearchContainer';
+import Header from 'components/Header';
+import SearchContainer from 'containers/SearchContainer';
 
 function App() {
   return (
